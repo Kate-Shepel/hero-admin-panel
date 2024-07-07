@@ -17,6 +17,12 @@
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
       "element": "water"
+    },
+    {
+      "name": "Ekaterina",
+      "description": "huhfielswhftioewl",
+      "element": "water",
+      "id": "276cd6ef-d6db-4e03-baac-cfb08b43672c"
     }
   ],
   "filters": [
