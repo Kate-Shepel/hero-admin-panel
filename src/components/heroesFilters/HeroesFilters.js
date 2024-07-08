@@ -37,7 +37,7 @@ const HeroesFilters = () => {
 
     const renderFilterButtons = (arr) => {
         if (arr.length === 0) {
-            return <h5 className="text-center mt-5">Filters hasn't been found</h5>
+            return <h5 className="text-center mt-5">Filters haven't been found</h5>
         }
 
         return arr.map(({name, label, className}) => {

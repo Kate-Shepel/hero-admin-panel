@@ -19,16 +19,16 @@
       "element": "water"
     },
     {
-      "name": "Ekaterina",
-      "description": "huhfielswhftioewl",
-      "element": "water",
-      "id": "276cd6ef-d6db-4e03-baac-cfb08b43672c"
-    },
-    {
       "name": "Мамба",
       "description": "Теряюсь в неизвестности",
       "element": "wind",
       "id": "b46aada5-a351-4b5f-bb4f-94a1fc5bae24"
+    },
+    {
+      "name": "Ekaterina",
+      "description": "Apotripiti Beach",
+      "element": "fire",
+      "id": "666fa773-cb40-4d8e-aae9-4c1601bc6495"
     }
   ],
   "filters": [
