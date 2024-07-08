@@ -8,12 +8,15 @@
 
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 
-import { filtersFetching, filtersFetched, filtersFetchingError } from '../../actions';
+import { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged } from '../../actions';
+import Spinner from '../spinner/Spinner';
 
 const HeroesFilters = () => {
 
+    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -26,16 +29,41 @@ const HeroesFilters = () => {
         // eslint-disable-next-line
     }, []);
 
+    if (filtersLoadingStatus === "loading") {
+        return <Spinner/>;
+    } else if (filtersLoadingStatus === "error") {
+        return <h5 className="text-center mt-5">Loading error</h5>
+    }
+
+    const renderFilterButtons = (arr) => {
+        if (arr.length === 0) {
+            return <h5 className="text-center mt-5">Filters hasn't been found</h5>
+        }
+
+        return arr.map(({name, label, className}) => {
+
+            // usage of classnames library and creating classes dynamically
+            const btnClasses = classNames('btn', className, {
+                'active': name === activeFilter
+            });
+
+            return <button 
+                        key={name} 
+                        id={name} 
+                        className={btnClasses}
+                        onClick={() => dispatch(activeFilterChanged(name))}
+                        >{label}</button>
+        })
+    }
+
+    const filterButtons = renderFilterButtons(filters);
+
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
                 <p className="card-text">Отфильтруйте героев по элементам</p>
                 <div className="btn-group">
-                    <button className="btn btn-outline-dark active">Все</button>
-                    <button className="btn btn-danger">Огонь</button>
-                    <button className="btn btn-primary">Вода</button>
-                    <button className="btn btn-success">Ветер</button>
-                    <button className="btn btn-secondary">Земля</button>
+                    {filterButtons}
                 </div>
             </div>
         </div>

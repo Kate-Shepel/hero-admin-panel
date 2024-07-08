@@ -34,23 +34,28 @@
   "filters": [
     {
       "name": "all",
-      "label": "Все"
+      "label": "Все",
+      "className": "btn-outline-dark"
     },
     {
       "name": "fire",
-      "label": "Огонь"
+      "label": "Огонь",
+      "className": "btn-danger"
     },
     {
       "name": "water",
-      "label": "Вода"
+      "label": "Вода",
+      "className": "btn-primary"
     },
     {
       "name": "wind",
-      "label": "Ветер"
+      "label": "Ветер",
+      "className": "btn-success"
     },
     {
       "name": "earth",
-      "label": "Земля"
+      "label": "Земля",
+      "className": "btn-secondary"
     }
   ]
 }
