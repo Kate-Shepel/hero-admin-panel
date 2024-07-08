@@ -23,13 +23,34 @@
       "description": "huhfielswhftioewl",
       "element": "water",
       "id": "276cd6ef-d6db-4e03-baac-cfb08b43672c"
+    },
+    {
+      "name": "Мамба",
+      "description": "Теряюсь в неизвестности",
+      "element": "wind",
+      "id": "b46aada5-a351-4b5f-bb4f-94a1fc5bae24"
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "name": "all",
+      "label": "Все"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь"
+    },
+    {
+      "name": "water",
+      "label": "Вода"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер"
+    },
+    {
+      "name": "earth",
+      "label": "Земля"
+    }
   ]
 }

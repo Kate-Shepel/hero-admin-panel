@@ -6,7 +6,26 @@
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
+import {useHttp} from '../../hooks/http.hook';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { filtersFetching, filtersFetched, filtersFetchingError } from '../../actions';
+
 const HeroesFilters = () => {
+
+    const dispatch = useDispatch();
+    const {request} = useHttp();
+
+    useEffect(() => {
+        dispatch(filtersFetching());
+        request("http://localhost:3001/filters")
+            .then(data => dispatch(filtersFetched(data)))
+            .catch(() => dispatch(filtersFetchingError()))
+
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
