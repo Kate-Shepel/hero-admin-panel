@@ -1,0 +1,20 @@
+.hero-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.hero-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 800ms, transform 800ms;
+}
+
+.hero-exit {
+  opacity: 1;
+}
+
+.hero-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 800ms, transform 800ms;
+}
