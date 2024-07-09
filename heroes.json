@@ -23,6 +23,12 @@
       "description": "Теряюсь в неизвестности",
       "element": "wind",
       "id": "b46aada5-a351-4b5f-bb4f-94a1fc5bae24"
+    },
+    {
+      "name": "Mami",
+      "description": "watching",
+      "element": "wind",
+      "id": "97d222cf-a5ed-4d66-9410-27bca64d6134"
     }
   ],
   "filters": [
