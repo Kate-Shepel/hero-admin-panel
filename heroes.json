@@ -25,22 +25,16 @@
       "id": "b46aada5-a351-4b5f-bb4f-94a1fc5bae24"
     },
     {
-      "name": "Mami",
-      "description": "watching",
-      "element": "wind",
-      "id": "97d222cf-a5ed-4d66-9410-27bca64d6134"
-    },
-    {
       "name": "Lola",
       "description": "running",
       "element": "earth",
       "id": "6d0487b4-2c9f-4f05-9b08-a4728cb1f449"
     },
     {
-      "name": "Kate",
-      "description": "jieouegjo;g",
-      "element": "fire",
-      "id": "4188428d-829a-4e7d-81df-bba6f5670984"
+      "name": "Jake",
+      "description": "swimming",
+      "element": "water",
+      "id": "7de540c1-9d97-40af-928f-8bc7cd90eb09"
     }
   ],
   "filters": [
