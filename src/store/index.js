@@ -2,7 +2,22 @@ import { legacy_createStore as createStore, combineReducers } from 'redux';
 import heroes from '../reducers/heroes';
 import filters from '../reducers/filters';
 
-const store = createStore(combineReducers({heroes, filters}), // = {heroes: heroes, filters: filters}
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const enhancer = (createStore) => (...args) => {
+  const store = createStore(...args);
+
+  const oldDispatch = store.dispatch;
+  store.dispatch = (action) => {
+    if(typeof action === 'string') {
+      return oldDispatch({
+        type: action
+      })
+    }
+    return oldDispatch(action)
+  }
+  return store;
+}
+const store = createStore(combineReducers({heroes, filters}), enhancer); // = {heroes: heroes, filters: filters}
 
 export default store;
+
+//window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
