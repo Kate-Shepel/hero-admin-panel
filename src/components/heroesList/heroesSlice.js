@@ -1,10 +1,11 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import {useHttp} from '../../hooks/http.hook'
 
-const initialState = {
-  heroes: [],
+const heroesAdapter = createEntityAdapter();
+
+const initialState = heroesAdapter.getInitialState({
   heroesLoadingStatus: 'idle'
-}
+});
 
 export const fetchHeroes = createAsyncThunk(
   'heroes/fetchHeroes',
@@ -18,15 +19,19 @@ const heroesSlice = createSlice({
   name: 'heroes',
   initialState,
   reducers: {
-    heroCreated: (state, action) => {state.heroes.push(action.payload)},
-    heroDeleted: (state, action) => {state.heroes = state.heroes.filter(item => item.id !== action.payload)}
+    heroCreated: (state, action) =>{
+      heroesAdapter.addOne(state, action.payload);
+    },
+    heroDeleted: (state, action) => {
+      heroesAdapter.removeOne(state, action.payload)
+    }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchHeroes.pending, state => {state.heroesLoadingStatus = 'loading'})
       .addCase(fetchHeroes.fulfilled, (state, action) => {
         state.heroesLoadingStatus = 'idle';
-        state.heroes = action.payload;
+        heroesAdapter.setAll(state, action.payload);
       })
       .addCase(fetchHeroes.rejected, state => {state.heroesLoadingStatus = 'error'})
       .addDefaultCase(() => {})
@@ -36,6 +41,9 @@ const heroesSlice = createSlice({
 const {actions, reducer} = heroesSlice;
 
 export default reducer;
+
+export const {selectAll} = heroesAdapter.getSelectors(state => state.heroes)
+
 export const {
   heroesFetching,
   heroesFetched,
